@@ -1,7 +1,7 @@
 #!/bin/bash
 module="four"
 device="four"
-major=63
+major=61
 
 # Compile and load the device
 make

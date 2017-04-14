@@ -1,6 +1,6 @@
 #!/bin/bash
-module="4MB"
-device="4MB"
+module="four"
+device="four"
 major=61
 
 # do clean

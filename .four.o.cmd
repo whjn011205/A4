@@ -797,6 +797,7 @@ deps_/home/wanghe/cs5250/A4/four.o := \
   arch/x86/include/asm/smap.h \
     $(wildcard include/config/x86/smap.h) \
   arch/x86/include/asm/uaccess_64.h \
+  include/linux/file.h \
 
 /home/wanghe/cs5250/A4/four.o: $(deps_/home/wanghe/cs5250/A4/four.o)
 
