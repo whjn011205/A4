@@ -141,6 +141,7 @@ long fourmb_device_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		    }
 		    printk(KERN_ALERT "ioctl get dev_msg: %s", dev_msg);
 		    break;
+
 		case WR_DEV_MSG:
 		    tmp = kmalloc(DEV_MSG_SIZE, GFP_KERNEL);
 		        if(copy_from_user(tmp, (char *)arg,  DEV_MSG_SIZE)){
