@@ -10,7 +10,7 @@
 #include <linux/ioctl.h>
 #include <linux/file.h>
 
-#define DEVICE_NAME "fourmb_device"
+#define DEVICE_NAME "four"
 #define DEVICE_SIZE 4194304
 #define DEV_MSG_SIZE 60
 #define MAJOR_NUMBER 61
@@ -49,7 +49,7 @@ static int fourmb_device_init(void)
 {
 	int result;
 	// register the device
-	result = register_chrdev(MAJOR_NUMBER, "fourmb_device",&fourmb_device_fops);
+	result = register_chrdev(MAJOR_NUMBER, "four",&fourmb_device_fops);
 	if (result < 0) {
 		return result;
 	}
@@ -73,7 +73,7 @@ static int fourmb_device_init(void)
 	 return -ENOMEM;
 	}
 
-	printk(KERN_ALERT "This is a fourmb_device device module\n");
+	printk(KERN_ALERT "This is a four device module\n");
 	return 0;
 }
 
@@ -90,8 +90,8 @@ static void fourmb_device_exit(void)
 		dev_msg = NULL;
      	}
 	// unregister the device
-	unregister_chrdev(MAJOR_NUMBER, "fourmb_device");
-	printk(KERN_ALERT "fourmb_device device module is unloaded\n");
+	unregister_chrdev(MAJOR_NUMBER, "four");
+	printk(KERN_ALERT "four device module is unloaded\n");
 }
 
 int fourmb_device_open(struct inode *inode, struct file *filp)
@@ -166,7 +166,7 @@ loff_t fourmb_device_llseek(struct file* filp, loff_t off, int whence) {
 	
 	loff_t newpos;
 	
-	printk(KERN_INFO "%s: fourmb_device_llseek f_pos = %lld, off = %lld, whence = %d", DEVICE_NAME, filp->f_pos, off, whence);
+	printk(KERN_INFO "%s: four_llseek f_pos = %lld, off = %lld, whence = %d", DEVICE_NAME, filp->f_pos, off, whence);
 
 	switch(whence) {
 		case 0: // SEEK_SET
@@ -183,7 +183,7 @@ loff_t fourmb_device_llseek(struct file* filp, loff_t off, int whence) {
 		break;
 
 		default: // invalid argument
-		printk(KERN_WARNING "%s: fourmb_device_llseek has invalid argument\n", DEVICE_NAME);
+		printk(KERN_WARNING "%s: four_llseek has invalid argument\n", DEVICE_NAME);
 		return -EINVAL;
 	}
 
@@ -192,7 +192,7 @@ loff_t fourmb_device_llseek(struct file* filp, loff_t off, int whence) {
 
 
 	filp->f_pos = newpos;
-	printk(KERN_INFO "%s: fourmb_device_llseek seeked to newpos %llu\n", DEVICE_NAME, newpos);
+	printk(KERN_INFO "%s: four_llseek seeked to newpos %llu\n", DEVICE_NAME, newpos);
 	return newpos;
 }
 
@@ -222,7 +222,7 @@ ssize_t fourmb_device_read(struct file *filp, char *buf, size_t count, loff_t *f
 		cur_size =0;
 
 finish:
-	printk(KERN_INFO "%s: fourmb_device_read complete\n", DEVICE_NAME);
+	printk(KERN_INFO "%s: four_read complete\n", DEVICE_NAME);
 	return result;
 }
 
@@ -255,7 +255,7 @@ ssize_t fourmb_device_write(struct file *filp, const char *buf,size_t count, lof
 		fourmb_device_data[*f_pos] = '\0';
 
 finish:
-	printk(KERN_INFO "%s: fourmb_device_write complete\n", DEVICE_NAME);
+	printk(KERN_INFO "%s: four_write complete\n", DEVICE_NAME);
 	return result;
 }
 
