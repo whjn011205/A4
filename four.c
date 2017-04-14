@@ -127,19 +127,19 @@ long fourmb_device_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 	switch(cmd){
 		case SCULL_HELLO:
-		    printk(KERN_WARNING "hello from ioctl\n");
+		    printk(KERN_WARNING "ioctl: hello\n");
 		    break;
 		case SET_DEV_MSG:
 		    if(copy_from_user(dev_msg, (char *)arg, DEV_MSG_SIZE)){
 		        return -EFAULT;
 		    }
-		    printk(KERN_ALERT "ioctl set dev_msg: %s", dev_msg);
+		    printk(KERN_ALERT "IOW set dev_msg: %s", dev_msg);
 		    break;
 		case GET_DEV_MSG:
 		    if(copy_to_user((char *)arg, dev_msg, DEV_MSG_SIZE)){
 		        return -EFAULT;
 		    }
-		    printk(KERN_ALERT "ioctl get dev_msg: %s", dev_msg);
+		    printk(KERN_ALERT "IOR copy dev_msg: %s", dev_msg);
 		    break;
 
 		case WR_DEV_MSG:
@@ -152,7 +152,7 @@ long fourmb_device_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		        return -EFAULT;
 		    }
 		    strcpy(dev_msg, tmp);
-		    printk(KERN_ALERT "dev_msg after _IOWR is: %s\n", dev_msg);
+		    printk(KERN_ALERT "IOWR dev_msg: %s\n", dev_msg);
 		    kfree(tmp);
 		    break;
 		default:
