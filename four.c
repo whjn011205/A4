@@ -73,7 +73,7 @@ static int fourmb_device_init(void)
 	 return -ENOMEM;
 	}
 
-	printk(KERN_ALERT "This is a four device module\n");
+	printk(KERN_ALERT "This is a 4MB device module\n");
 	return 0;
 }
 
