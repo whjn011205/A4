@@ -1,4 +1,4 @@
-obj-m += 4MB.o
+obj-m += four.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

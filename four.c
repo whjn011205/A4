@@ -7,7 +7,7 @@
 #include <linux/fs.h>
 #include <linux/proc_fs.h>
 #include <asm/uaccess.h>
-#define MAJOR_NUMBER 61
+#define MAJOR_NUMBER 63
 
 /* forward declaration */
 int onebyte_open(struct inode *inode, struct file *filep);
@@ -104,7 +104,7 @@ int result;
 	}
 	// initialize the value to be X
 	*onebyte_data = 'X';
-	printk(KERN_ALERT "This is a 4MB device module\n");
+	printk(KERN_ALERT "This is a four device module\n");
 	return 0;
 }
 
@@ -118,7 +118,7 @@ static void onebyte_exit(void)
 	}
 	// unregister the device
 	unregister_chrdev(MAJOR_NUMBER, "onebyte");
-	printk(KERN_ALERT "Onebyte device module is unloaded\n");
+	printk(KERN_ALERT "four device module is unloaded\n");
 }
 MODULE_LICENSE("GPL");
 module_init(onebyte_init);
