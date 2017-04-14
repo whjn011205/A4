@@ -48,8 +48,8 @@ void test()
 		printf("_IOWR ioctl exchange message fail\n");
 		return ;
 	}
-	printf("user_msg: %s \n", user_msg);   
-	free(user_msg);
+	printf("user_msg: %s \n", user_msg); 
+	free(user_msg); 
 }
 
 int main(int argc, char **argv)
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 	lcd = open("/dev/four", O_RDWR);
 	
 	if(lcd == -1){
-		perror("uffffnable to open lcd");
+		perror("unable to open lcd");
 		exit(EXIT_FAILURE);	
 	}
 	
