@@ -23,6 +23,8 @@ open: onebyte_open,
 release: onebyte_release
 };
 
+#define NUM_BYTES 4096
+
 char *onebyte_data = NULL;
 int onebyte_open(struct inode *inode, struct file *filep)
 {
@@ -81,7 +83,7 @@ int result;
 // kmalloc is just like malloc, the second parameter is
 // the type of memory to be allocated.
 // To release the memory allocated by kmalloc, use kfree.
-	onebyte_data = kmalloc(sizeof(char), GFP_KERNEL);
+	onebyte_data = kmalloc(sizeof(char)*NUM_BYTES, GFP_KERNEL);
 	if (!onebyte_data) {
 	onebyte_exit();
 	// cannot allocate memory
@@ -90,7 +92,7 @@ int result;
 	}
 	// initialize the value to be X
 	*onebyte_data = 'X';
-	printk(KERN_ALERT "This is a onebyte device module\n");
+	printk(KERN_ALERT "This is a 4MB device module\n");
 	return 0;
 }
 
