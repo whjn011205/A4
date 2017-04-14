@@ -28,7 +28,7 @@ void test()
 	
 	printf("result = %d\n", k);
 
-	/*char *pre_msg = "The predefined message\n";
+	char *pre_msg = "The predefined message\n";
 	if(k = ioctl(lcd, SET_DEV_MSG, pre_msg)){
 		printf("ioctl set message fail\n");
 		return ;
@@ -42,7 +42,7 @@ void test()
 	printf("user_msg is: %s\n", user_msg); 
 
 
-	char *new_user_msg = "The new message!\n";
+	/*char *new_user_msg = "The new message!\n";
 	strcpy(user_msg, new_user_msg);
 	if(k = ioctl(lcd, WR_DEV_MSG, user_msg)){
 		printf("_IOWR ioctl exchange message fail\n");
